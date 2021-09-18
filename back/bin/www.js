@@ -3,14 +3,13 @@
 /**
  * Module dependencies.
  */
+
 import app from '../app.js'
 import debug from "debug";
 import http from "http";
-debug.debug('back:server');
+import * as socket from "../socket/index.js";
 
-// const app = require('../app');
-// const debug = require('debug')('back:server');
-// const http = require('http');
+debug.debug('back:server');
 
 /**
  * Get port from environment and store in Express.
@@ -24,6 +23,12 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+
+/**
+ * Set socket io Listen
+ */
+
+socket.startServer(server)
 
 /**
  * Listen on provided port, on all network interfaces.
@@ -91,4 +96,6 @@ function onListening() {
     ? 'pipe ' + addr
     : 'port ' + addr.port;
   debug('Listening on ' + bind);
+
+  console.log("listening server : "+bind)
 }

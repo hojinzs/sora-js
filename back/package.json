@@ -5,7 +5,7 @@
   "type": "module",
   "scripts": {
     "start": "nodemon --exec babel-node ./bin/www.js",
-    "start:dev": "nodemon --watch --exec babel-node ./bin/www.js --trace-warnings"
+    "start:dev": "nodemon --exec babel-node ./bin/www.js --trace-warnings"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,6 +14,7 @@
     "express": "~4.16.1",
     "http-errors": "~1.6.3",
     "morgan": "~1.9.1",
+    "socket.io": "^4.2.0",
     "stylus": "^0.55.0"
   },
   "devDependencies": {

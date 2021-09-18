@@ -1,36 +1,49 @@
 <script setup lang="ts">
 import { ref } from 'vue'
+import useSoraJS_Client from "../compositions/sora.js-client";
 
-defineProps<{ msg: string }>()
+const message = ref<string>("")
+const room = ref<string>("")
+const chatMessages = ref<any[]>([])
 
-const count = ref(0)
+const { emitMessage, onMessage, joinRoom } = useSoraJS_Client()
+
+const onSendMessage = () => {
+    if(message.value !== ""){
+        console.log("send message => ", message.value)
+        emitMessage(room.value, message.value)
+        message.value = ""
+    }
+}
+
+onMessage(message => {
+    chatMessages.value.push(message)
+})
+
+const onJoinRoom = () => {
+    if(room.value !== ""){
+        console.log("join room => ", room.value)
+        joinRoom(room.value)
+    }
+}
+
 </script>
 
 <template>
-  <h1>{{ msg }}</h1>
-
-  <p>
-    Recommended IDE setup:
-    <a href="https://code.visualstudio.com/" target="_blank">VSCode</a>
-    +
-    <a href="https://github.com/johnsoncodehk/volar" target="_blank">Volar</a>
-  </p>
-
-  <p>See <code>README.md</code> for more information.</p>
-
-  <p>
-    <a href="https://vitejs.dev/guide/features.html" target="_blank">
-      Vite Docs
-    </a>
-    |
-    <a href="https://v3.vuejs.org/" target="_blank">Vue 3 Docs</a>
-  </p>
-
-  <button type="button" @click="count++">count is: {{ count }}</button>
-  <p>
-    Edit
-    <code>components/HelloWorld.vue</code> to test hot module replacement.
-  </p>
+    <div>
+        <h3>ROOM : {{ room || 'Public' }}</h3>
+        <form @submit.prevent="onJoinRoom">
+            <input name="message" v-model="room"/>
+            <input type="submit" value="룸 변경"/>
+        </form>
+        <form @submit.prevent="onSendMessage">
+            <input name="message" v-model="message"/>
+            <input type="submit" value="보내기"/>
+        </form>
+        <div>
+            <div v-for="(msg, index) in chatMessages" :key="index">{{ msg }}</div>
+        </div>
+    </div>
 </template>
 
 <style scoped>

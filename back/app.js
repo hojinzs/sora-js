@@ -8,8 +8,8 @@ import stylus from "stylus";
 import indexRouter from "./routes/index.js";
 import usersRouter from "./routes/users.js";
 
-const app = express();
 const __dirname = path.resolve();
+const app = express();
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
