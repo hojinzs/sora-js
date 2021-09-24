@@ -1,0 +1,19 @@
+{
+  "name": "doc",
+  "version": "0.0.1",
+  "description": "sora js document",
+  "main": "index.js",
+  "authors": {
+    "name": "stevelee",
+    "email": "hojinzs@gmail.com"
+  },
+  "repository": "https://github.com/hojinzs/sora-js/doc",
+  "scripts": {
+    "dev": "vuepress dev src",
+    "build": "vuepress build src"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "vuepress": "^1.5.3"
+  }
+}

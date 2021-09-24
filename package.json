@@ -1,0 +1,33 @@
+{
+  "name": "sora.js",
+  "version": "0.1.0",
+  "description": "chatting client demo",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "server:dev": "npm run dev --prefix back/",
+    "front:dev": "npm run dev --prefix front/",
+    "dev": "concurrently \"npm run server:dev\" \"npm run front:dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hojinzs/sora-js.git"
+  },
+  "keywords": [
+    "socket.io",
+    "node.js",
+    "express.js",
+    "vue.js"
+  ],
+  "author": "stevelee",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hojinzs/sora-js/issues"
+  },
+  "homepage": "https://github.com/hojinzs/sora-js#readme",
+  "dependencies": {
+    "concurrently": "^6.2.1"
+  }
+}
